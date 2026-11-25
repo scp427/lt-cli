@@ -1,0 +1,16 @@
+{
+  "name": "lt-cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "CLI and local Web UI for NetEase Cloud Music listen-together rooms with synchronized mpv playback",
+  "scripts": {
+    "start": "node cli.mjs",
+    "ui": "node ui.mjs",
+    "login": "node cli.mjs --login",
+    "build": "node build.mjs"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}
