@@ -30,6 +30,22 @@
 - Python 3：仅在 macOS 上从桌面客户端导入 Cookie 时需要
 - esbuild：仅在重新构建单文件启动器时需要，运行时不需要
 
+## 下载打包版
+
+可直接在 GitHub Releases 下载自包含启动器：
+
+| 平台 | 下载 |
+| --- | --- |
+| macOS / Linux | [lt-ui-macos-linux.zip](https://github.com/scp427/lt-cli/releases/download/v0.1.0/lt-ui-macos-linux.zip) |
+| Windows | [lt-ui-windows.zip](https://github.com/scp427/lt-cli/releases/download/v0.1.0/lt-ui-windows.zip) |
+
+也可直接下载单个文件：
+
+- [lt-ui](https://github.com/scp427/lt-cli/releases/download/v0.1.0/lt-ui)
+- [lt-ui.cmd](https://github.com/scp427/lt-cli/releases/download/v0.1.0/lt-ui.cmd)
+
+解压后直接运行即可。目标机器仍需具备 Node.js ≥ 22.5 与 mpv。
+
 ## 快速开始
 
 ### 源码运行
@@ -183,7 +199,7 @@ dist/lt-ui        macOS / Linux
 dist/lt-ui.cmd    Windows
 ```
 
-构建完成后可删除 `node_modules`，产物运行时不需要它。每个启动器约 185 KB，可直接复制到目标机器运行，只需目标机器具备 Node.js ≥ 22.5 与 mpv。
+构建完成后可删除 `node_modules`，产物运行时不需要它。每个启动器约 190 KB，可直接复制到目标机器运行，只需目标机器具备 Node.js ≥ 22.5 与 mpv。
 
 启动示例：
 
