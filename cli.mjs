@@ -83,7 +83,10 @@ async function main() {
       return null
     })
     if (active) console.log('已自动接管当前账号所在房间。')
-    else console.log('未检测到已有房间。输入 create 创建房间，或 join <分享链接> 加入。')
+    else {
+      console.log('未检测到已有房间。输入 create 创建房间，或 join <分享链接> 加入。')
+      session.startIdleDetection()
+    }
   }
 
   if (inviteText) {

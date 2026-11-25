@@ -130,7 +130,10 @@ if (!inviteText) {
     console.log(`自动检测已有房间失败：${error.message}`)
     return null
   })
-  if (!active) console.log('未检测到已有房间。启动后可在网页里加入或创建房间。')
+  if (!active) {
+    console.log('未检测到已有房间。启动后可在网页里加入或创建房间。')
+    session.startIdleDetection()
+  }
 }
 
 async function joinRoom(link) {

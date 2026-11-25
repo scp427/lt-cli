@@ -155,7 +155,7 @@ https://st.music.163.com/listen-together/multishare/index.html?roomId=...&invite
 - 多人匹配房间：通过 `multi/match/status/get` 检测
 - 自建 host 房间：通过 `listen/together/status/get` 检测
 
-检测到后会自动接管该房间，无需再次粘贴链接。若官方 App 中取消或退出房间，本地状态会在下一次状态轮询中同步为已离开，并停止播放与心跳。
+检测到后会自动接管该房间，无需再次粘贴链接。若启动时未检测到房间，程序会继续以 4 秒间隔检测，因此先启动程序、后在 App 中创建房间也能自动接管。若官方 App 中取消或退出房间，本地状态会在下一次状态轮询中同步为已离开，并停止播放与心跳。
 
 ## 同步方式
 
