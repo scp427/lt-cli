@@ -125,6 +125,13 @@ const shutdown = async signal => {
 process.once('SIGINT', () => shutdown('SIGINT'))
 process.once('SIGTERM', () => shutdown('SIGTERM'))
 await session.me()
+if (!inviteText) {
+  const active = await session.detectActiveRoom().catch(error => {
+    console.log(`自动检测已有房间失败：${error.message}`)
+    return null
+  })
+  if (!active) console.log('未检测到已有房间。启动后可在网页里加入或创建房间。')
+}
 
 async function joinRoom(link) {
   if (session.state.roomId && !session.state.stopped) await session.leave()
@@ -137,7 +144,7 @@ if (inviteText) {
   console.log('正在加入房间…')
   await joinRoom(inviteText)
 } else {
-  console.log('未指定房间链接。启动后可在网页里输入链接加入，或在终端输入：join <链接>')
+  console.log('可在网页里输入链接加入，或在终端输入：join <链接>')
 }
 
 const html = `<!doctype html>

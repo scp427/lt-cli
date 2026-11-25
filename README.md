@@ -36,13 +36,13 @@
 
 | 平台 | 下载 |
 | --- | --- |
-| macOS / Linux | [lt-ui-macos-linux.zip](https://github.com/scp427/lt-cli/releases/download/v0.1.0/lt-ui-macos-linux.zip) |
-| Windows | [lt-ui-windows.zip](https://github.com/scp427/lt-cli/releases/download/v0.1.0/lt-ui-windows.zip) |
+| macOS / Linux | [lt-ui-macos-linux.zip](https://github.com/scp427/lt-cli/releases/download/v0.1.1/lt-ui-macos-linux.zip) |
+| Windows | [lt-ui-windows.zip](https://github.com/scp427/lt-cli/releases/download/v0.1.1/lt-ui-windows.zip) |
 
 也可直接下载单个文件：
 
-- [lt-ui](https://github.com/scp427/lt-cli/releases/download/v0.1.0/lt-ui)
-- [lt-ui.cmd](https://github.com/scp427/lt-cli/releases/download/v0.1.0/lt-ui.cmd)
+- [lt-ui](https://github.com/scp427/lt-cli/releases/download/v0.1.1/lt-ui)
+- [lt-ui.cmd](https://github.com/scp427/lt-cli/releases/download/v0.1.1/lt-ui.cmd)
 
 解压后直接运行即可。目标机器仍需具备 Node.js ≥ 22.5 与 mpv。
 
@@ -148,6 +148,15 @@ https://st.music.163.com/listen-together/multishare/index.html?roomId=...&invite
 
 如果账号已在房间中，创建接口会返回现有房间，不会重复建房。
 
+### 自动接管已有房间
+
+启动 CLI 或 Web UI 时，如果未传入分享链接，程序会检测当前账号是否已经处于官方 App 创建的房间中：
+
+- 多人匹配房间：通过 `multi/match/status/get` 检测
+- 自建 host 房间：通过 `listen/together/status/get` 检测
+
+检测到后会自动接管该房间，无需再次粘贴链接。若官方 App 中取消或退出房间，本地状态会在下一次状态轮询中同步为已离开，并停止播放与心跳。
+
 ## 同步方式
 
 ### 多人房间
@@ -179,6 +188,7 @@ https://st.music.163.com/listen-together/multishare/index.html?roomId=...&invite
 - 自建房间聊天历史依赖本地消息缓存；服务端没有对应的公开历史接口。
 - 待播队列暂不支持调整已有歌曲顺序。
 - 多人房间与自建房间使用不同协议，本项目不能保证以同一流程互相加入。
+- 官方 App 不会自动打开本项目创建的房间；需要在 App 中打开官方分享链接或刷新 App 状态。
 - Cookie 等同账号凭据，请不要分享给他人。
 
 ## 自包含启动器

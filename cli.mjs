@@ -77,12 +77,19 @@ async function main() {
   process.once('SIGINT', () => shutdown('SIGINT'))
   process.once('SIGTERM', () => shutdown('SIGTERM'))
 
+  if (!inviteText) {
+    const active = await session.detectActiveRoom().catch(error => {
+      console.log(`自动检测已有房间失败：${error.message}`)
+      return null
+    })
+    if (active) console.log('已自动接管当前账号所在房间。')
+    else console.log('未检测到已有房间。输入 create 创建房间，或 join <分享链接> 加入。')
+  }
+
   if (inviteText) {
     console.log('检查邀请并加入房间…')
     await session.join(inviteText)
     console.log('已加入房间。输入 help 查看命令。')
-  } else {
-    console.log('未指定房间链接。输入 create 创建房间，或 join <分享链接> 加入。')
   }
   help()
 
